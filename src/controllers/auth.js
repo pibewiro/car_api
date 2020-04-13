@@ -54,7 +54,8 @@ const AuthController = {
       data: {
         id: user._id,
         firstname: user.firstname,
-        lastname: user.lastname
+        lastname: user.lastname,
+        favorite: user.favorite
       },
       token
     })

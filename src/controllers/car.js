@@ -219,6 +219,34 @@ const carController = {
       })
 
     }
+  },
+
+  async userCars(req, res, next) {
+
+    const {
+      id
+    } = req.params;
+
+    try {
+      const car = await Car.find({
+        user: id
+      }).populate({
+        path: 'user',
+        select: 'firstname lastname address.city address.state'
+      })
+
+      return res.status(200).json({
+        data: car
+      })
+    } catch (err) {
+      console.log(err)
+
+      return res.status(500).json({
+        data: 'Internal Error'
+      })
+    }
+
+
   }
 }
 
